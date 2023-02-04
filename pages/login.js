@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import login_validdate from "../lib/validate";
 
 const login = () => {
-  const callbackUrl = process.env.NEXTAUTH_URL;
+  const callbackUrl = "https://next-js-oauth.vercel.app"
   const [show, setShow] = useState(false);
   const router = useRouter();
 
