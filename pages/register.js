@@ -32,10 +32,10 @@ const register = () => {
       body: JSON.stringify(values),
     };
 
-    await fetch("https://next-js-oauth-aeba7li3o-jackylai01.vercel.app/api/auth/signup", options)
+    await fetch("https://next-js-oauth.vercel.app/api/auth/signup", options)
       .then((res) => res.json())
       .then((data) => {
-        if (data) router.push("https://next-js-oauth-aeba7li3o-jackylai01.vercel.app");
+        if (data) router.push("https://next-js-oauth.vercel.app");
       });
   }
 
