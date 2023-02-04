@@ -3,7 +3,7 @@ import Users from "../../../model/UserSchema";
 import { hash } from "bcryptjs";
 
 export default async function handler(req, res) {
-  connectMongo().catch((err) => res.json({ err: err }));
+  connectMongo().catch((error) => res.json({ error: "Connection Failed...!" }));
 
   if (req.method === "POST") {
     if (!req.body) return res.status(404).json({ err: "發生錯誤" });
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     if (foundUsersEmail) return res.status(422).json({ msg: "信箱已存在" });
 
     //stpe4 前面檢查通過-建立資料-並加密碼加密
-    await Users.create(
+    Users.create(
       { username, email, password: await hash(password, 12) },
       function (err, data) {
         if (err) return res.status(404).json({ err });

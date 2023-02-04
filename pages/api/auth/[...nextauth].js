@@ -22,8 +22,8 @@ export default NextAuth({
       async authorize(credentials, req) {
         //credentials 可以看成req.body的資料跟一些邏輯處理的設定
         //單一路由連結mongodb，登入
-        connectMongo().catch((err) => {
-          err: "Connection Failed..";
+        connectMongo().catch((error) => {
+          error: "連結失敗";
         });
 
         //檢查OAuth 登入的信箱，在本地端資料庫是否存在
@@ -38,7 +38,7 @@ export default NextAuth({
           result.password
         );
 
-        //如果密碼不一致，或信箱不一致都會丟出錯誤
+        // incorrect password
         if (!checkPassword || result.email !== credentials.email) {
           throw new Error("找不到使用者名稱或密碼");
         }
